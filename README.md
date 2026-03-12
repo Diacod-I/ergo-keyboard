@@ -18,3 +18,6 @@
     5) Get Soldering kit and solder everything
     6) Fix everything together
     7) Code the microcontroller logic and key mapping logic
+
+## (12/3/2026)
+- I'm considering the layout amongst DVORAK and Coleman-DH from [the Knucklehead layout](https://github.com/minusfive/knucklehead/blob/main/README.md)
