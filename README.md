@@ -7,6 +7,8 @@ Some guidelines for what I want:
 - Linear over staggered, but we need to aptly position the column based on my hand measurements.
 - Split, so that I can position my arms more freely on a table.
 
+I'm going to add all my work related to this here.
+
 ## Build Log
 ### 2/8/2026
 
