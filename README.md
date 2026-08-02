@@ -9,6 +9,15 @@
 2) Started assigning nets directly on the controller pads in KiCad.
 3) Wired the split link: typed a new data net onto each controller's P1 and each TRRS jack, plus VCC/GND. Both jacks assigned identically so the cable ties the halves together correctly.
 Set up git for the project + .gitignore.
+<div align="center">
+<img width="907" height="348" alt="Screenshot 2026-08-02 at 9 38 25 PM" src="https://github.com/user-attachments/assets/c15b96da-4430-4539-8922-d74f60c38193" />
+<p>Figure 1. Ergogen Key Layout</p><br/>
+</div>
+
+<div align="center">
+<img width="1102" height="772" alt="Screenshot 2026-08-02 at 9 37 22 PM" src="https://github.com/user-attachments/assets/b9c308fd-fe34-4728-bc07-9b32113005e6" />
+<p>Figure 2. KiCAD PCB layout before net assignment</p><br/>
+</div>
 
 #### Learned
 
@@ -19,9 +28,9 @@ Important: board.kicad_pcb now has hand edits (outline curves + net assignments)
 
 #### Still open
 
-Finish assigning all controller pads -> route the matrix -> ground pour -> DRC -> Gerbers -> order.
-Keymap dry-run (flash the Corne keymap.c, settle hold-vs-toggle) - not started.
-OLED v2: scaffolded + commented out, parked until a test rig.
+- Finish assigning all controller pads -> route the matrix -> ground pour -> DRC -> Gerbers -> order.
+- Keymap dry-run (flash the Corne keymap.c, settle hold-vs-toggle) - not started.
+- OLED v2: scaffolded + commented out, parked until a test rig.
 
 ### 12/3/2026
 - I'm considering the layout amongst DVORAK and Coleman-DH from [the Knucklehead layout](https://github.com/minusfive/knucklehead/blob/main/README.md)
