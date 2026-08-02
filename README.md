@@ -1,22 +1,35 @@
 # My Ergonomic Keyboard
 
+I have a ton of cramps and metacarpal pain due to my big hands. This is me trying to solve that with an ergonomic keyboard. <br/>
+
+Some guidelines for what I want:
+- Keep it simple and go with QWERTY
+- Linear over staggered, but we need to aptly position the column based on my hand measurements.
+
 ## Build Log
 ### 2/8/2026
 
 #### Did today
+1) Measured my hands to understand and evaluate an ideal finger placement.
+<div align="center">
+<img width="360" height="480" alt="BEB380F8-2C89-42DD-A3A0-69BD96AF3945_4_5005_c" src="https://github.com/user-attachments/assets/e6a3e43c-fdf8-47f3-8472-830c761ccba8" />
+<p>Figure 1. Manual calculations</p><br/>
+</div>
 
-1) Filled the MCU pin map: matrix on P2–P10 (cols P2–P6, rows P7–P10), split data on P1, VCC/GND on the rails. Same pads on both halves (identical firmware; QMK handles the split). Left P0 + P14 -> P21 free for the OLED SPI bus / shift-registers later.
-2) Started assigning nets directly on the controller pads in KiCad.
-3) Wired the split link: typed a new data net onto each controller's P1 and each TRRS jack, plus VCC/GND. Both jacks assigned identically so the cable ties the halves together correctly.
+2) Filled the MCU pin map: matrix on P2–P10 (cols P2–P6, rows P7–P10), split data on P1, VCC/GND on the rails. Same pads on both halves (identical firmware; QMK handles the split). Left P0 + P14 -> P21 free for the OLED SPI bus / shift-registers later.
+
+3) Started assigning nets directly on the controller pads in KiCad.
+
+4) Wired the split link: typed a new data net onto each controller's P1 and each TRRS jack, plus VCC/GND. Both jacks assigned identically so the cable ties the halves together correctly.
 Set up git for the project + .gitignore.
 <div align="center">
 <img width="907" height="348" alt="Screenshot 2026-08-02 at 9 38 25 PM" src="https://github.com/user-attachments/assets/c15b96da-4430-4539-8922-d74f60c38193" />
-<p>Figure 1. Ergogen Key Layout</p><br/>
+<p>Figure 2. Ergogen Key Layout</p><br/>
 </div>
 
 <div align="center">
 <img width="1102" height="772" alt="Screenshot 2026-08-02 at 9 37 22 PM" src="https://github.com/user-attachments/assets/b9c308fd-fe34-4728-bc07-9b32113005e6" />
-<p>Figure 2. KiCAD PCB layout before net assignment</p><br/>
+<p>Figure 3. KiCAD PCB layout before net assignment</p><br/>
 </div>
 
 #### Learned
@@ -36,7 +49,7 @@ Important: board.kicad_pcb now has hand edits (outline curves + net assignments)
 - I'm considering the layout amongst DVORAK and Coleman-DH from [the Knucklehead layout](https://github.com/minusfive/knucklehead/blob/main/README.md)
 
 ### 11/3/2026
-- Making the plan for what I wanna make in my keyboard. Following is some ideas that I have
+- Making the plan for what I wanna make in my keyboard. Following is some ideas that I am considering
     1) Corne style split keyboard (easy to carry around) 
     2) Ortholinear columns with a slightly wider gap between each other for my big hands.
     3) VIM focused key layout 
