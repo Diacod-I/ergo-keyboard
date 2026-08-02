@@ -10,7 +10,7 @@ Some guidelines for what I want:
 I'm going to add all my work related to this here.
 
 ## Build Log
-### 2/8/2026
+### 2/8/2026 (Newest update!)
 
 #### Did today
 1) Manually measured my hands to understand and evaluate an ideal finger placement (since I didn't have a touch screen to test using 
