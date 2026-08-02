@@ -1,6 +1,6 @@
 # My log for making my ergonomic keyboard
 
-## Log 
+## Study Log 
 ### (11/3/2026)
 - Making the plan for what I wanna make in my keyboard. Following is some ideas that I have
     1) Corne style split keyboard (easy to carry around) 
