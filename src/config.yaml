@@ -1,0 +1,241 @@
+# ============================================================
+#  Ergonomic split — generate-ready v1
+#  Outline: auto-mirroring per-key HULL, sharp corners (fillet 0),
+#  tight margin. Reliable on both halves (no hand-traced polygon).
+#  OLED subsystem commented out at the bottom (scaffold).
+#  Validate/tune in ergogen.ceoloide.com.
+# ============================================================
+
+units:
+  kx: 20
+  ky: 19
+  s_ring:   14
+  s_middle: 10
+  s_index: -10
+  s_inner:   0
+
+points:
+  zones:
+    matrix:
+      anchor:
+        shift: [45, -150]
+      key:
+        spread: kx
+        padding: ky
+      columns:
+        pinky:
+          key.column_net: col0
+          rows:
+            bottom:
+              skip: true
+        ring:
+          key.stagger: s_ring
+          key.column_net: col1
+        middle:
+          key.stagger: s_middle
+          key.column_net: col2
+        index:
+          key.stagger: s_index
+          key.column_net: col3
+        inner:
+          key.stagger: s_inner
+          key.column_net: col4
+      rows:
+        bottom:
+          row_net: row2
+        home:
+          row_net: row1
+        top:
+          row_net: row0
+
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [18, -20]
+        rotate: -24
+      key:
+        spread: 18
+        origin: [-8, -18]
+      columns:
+        t_near:
+          key.splay: 0
+          key.column_net: col4
+        t_mid:
+          key.splay: -14
+          key.column_net: col3
+        t_far:
+          key.splay: -14
+          key.column_net: col2
+      rows:
+        thumb:
+          row_net: row3
+
+  mirror:
+    ref: matrix_pinky_home
+    distance: 330
+
+# ============================================================
+#  OUTLINE — per-key hull (auto-mirrors, always renders).
+#  Sharp corners; tight 6 mm margin. Component pads close the
+#  MCU + finger/thumb notches. Everything here is a simple dial.
+# ============================================================
+outlines:
+  board:
+    keys:
+      what: rectangle
+      where: true
+      size: [kx, ky]
+      expand: 6          # margin — lower = smaller/cheaper board
+      fillet: 0          # sharp corners (typical keyboard-PCB look)
+
+    # MCU pad — covers the controller + bridges toward the top edge.
+    mcu_pad_left:
+      what: rectangle
+      where:
+        ref: matrix_inner_top
+        shift: [21, -16.5]
+      size: [26, 64]
+      fillet: 0
+    mcu_pad_right:
+      what: rectangle
+      where:
+        ref: mirror_matrix_inner_top
+        shift: [21, -16.5]        # flip x -> -26 if it lands on the wrong side
+      size: [26, 64]
+      fillet: 0
+
+    middle_pad_left:
+      what: rectangle
+      where:
+        ref: matrix_middle_bottom
+        shift: [12, -12.5]
+      size: [40, 26]
+
+    middle_pad_right:
+      what: rectangle
+      where:
+        ref: mirror_matrix_middle_bottom
+        shift: [12, -12.5]
+      size: [40, 26]
+
+    # Neck pad — fills the finger<->thumb junction (interior, cost-neutral).
+    neck_pad_left:
+      what: rectangle
+      where:
+        ref: matrix_inner_bottom
+        shift: [12, -16]
+      size: [40, 26]
+      fillet: 0
+
+    neck_pad_right:
+      what: rectangle
+      where:
+        ref: mirror_matrix_inner_bottom
+        shift: [12, -16]       # flip x -> -12 if it lands on the wrong side
+      size: [40, 26]
+      fillet: 0
+
+# ============================================================
+#  PCB
+# ============================================================
+pcbs:
+  board:
+    template: kicad8
+    outlines:
+      - outline: board
+        layer: Edge.Cuts
+
+    footprints:
+      # ---- matrix: switches + diodes (auto-placed on both halves) ----
+      switch:
+        what: ceoloide/switch_mx
+        where: true
+        params:
+          hotswap: true
+          reversible: true
+          from: "{{column_net}}"
+          to: "{{name}}"
+      diode:
+        what: ceoloide/diode_tht_sod123
+        where: true
+        params:
+          reversible: true
+          from: "{{name}}"
+          to: "{{row_net}}"
+
+      # ---- controller: socketed Pro Micro-footprint RP2040 ----
+      mcu_left:
+        what: ceoloide/mcu_nice_nano
+        where:
+          ref: matrix_inner_top
+          shift: [21, -8]
+          rotate: 0
+        params:
+          # >>> YOU FILL THIS IN <<<  GPIO pin -> net mapping
+      mcu_right:
+        what: ceoloide/mcu_nice_nano
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [21, -8]
+          rotate: 0
+        params:
+          # >>> SAME mapping as mcu_left (R_ nets) <<<
+
+      # ---- reset + TRRS: directly BELOW each side's MCU ----
+      reset_left:
+        what: ceoloide/reset_switch_tht_top
+        where:
+          ref: matrix_inner_top
+          shift: [16, -52]
+        params:
+          from: GND
+          to: RST
+      reset_right:
+        what: ceoloide/reset_switch_tht_top
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [16, -52]       # flip x -> -16 if it lands wrong
+        params:
+          from: GND
+          to: RST
+
+      trrs_left:
+        what: ceoloide/trrs_pj320a
+        where:
+          ref: matrix_inner_top
+          shift: [16, -32]
+          rotate: 90
+      trrs_right:
+        what: ceoloide/trrs_pj320a
+        where:
+          ref: mirror_matrix_inner_top
+          shift: [16, -32]       # flip x -> -34 if it lands wrong
+          rotate: 90
+
+# ============================================================
+#  OLED SUBSYSTEM — COMMENTED OUT (scaffold, not generate-ready)
+#  Uncomment + complete once you have: a real 0.42" OLED footprint,
+#  a real SOIC-16 74HC595 footprint, and the manual Q0..Q7 -> per-key
+#  CS ({{name}}) mapping — all proven on a 2-4 key + one-595 test rig.
+#  Paste back under pcbs.board.footprints when ready:
+# ------------------------------------------------------------
+#      oled:
+#        what: <REAL 0.42" OLED footprint>
+#        where: true
+#        params:
+#          <data>: SPI_MOSI
+#          <clk>:  SPI_CLK
+#          <cs>:   "{{name}}"
+#          <vcc>:  VCC
+#          <gnd>:  GND
+#      shiftreg_left_a:
+#        what: <REAL SOIC-16 74HC595>
+#        where: { ref: matrix_inner_top, shift: [26, -66] }
+#        params: { SER: SR_DATA, SRCLK: SR_CLK, RCLK: SR_LATCH, QH: SR_CHAIN_L }
+#          # Q0..Q7 -> 8 key CS nets ({{name}}):  <<< MAP MANUALLY >>>
+#      shiftreg_left_b:
+#        what: <REAL SOIC-16 74HC595>
+#        where: { ref: matrix_inner_top, shift: [26, -80] }
+#        params: { SER: SR_CHAIN_L, SRCLK: SR_CLK, RCLK: SR_LATCH }
+#      # + shiftreg_right_a / _b at mirror_matrix_inner_top (R_ nets)
+# ============================================================

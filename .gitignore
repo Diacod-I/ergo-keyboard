@@ -1,0 +1,6 @@
+.DS_Store
+src/outputs/demo.svg
+src/outputs/outlines/
+src/outputs/pcbs/board.kicad_prl
+src/outputs/pcbs/board.kicad_pro
+src/outputs/pcbs/*.lck
