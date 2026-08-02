@@ -1,16 +1,17 @@
 # My Ergonomic Keyboard
 
-I have a ton of cramps and metacarpal pain due to my big hands. This is me trying to solve that with an ergonomic keyboard. <br/>
+I have a ton of cramps and metacarpal pain due to typing on small keyboards like the Macbook keyboard (small relative to my larger-than-average hands). I'm going to solve that with an ergonomic keyboard. <br/>
 
 Some guidelines for what I want:
-- Keep it simple and go with QWERTY
+- Keep it simple and go with QWERTY.
 - Linear over staggered, but we need to aptly position the column based on my hand measurements.
+- Split, so that I can position my arms more freely on a table.
 
 ## Build Log
 ### 2/8/2026
 
 #### Did today
-1) Measured my hands to understand and evaluate an ideal finger placement.
+1) Manually measured my hands to understand and evaluate an ideal finger placement (since I didn't have a touch screen to test using 
 <div align="center">
 <img width="360" height="480" alt="BEB380F8-2C89-42DD-A3A0-69BD96AF3945_4_5005_c" src="https://github.com/user-attachments/assets/e6a3e43c-fdf8-47f3-8472-830c761ccba8" />
 <p>Figure 1. Manual calculations</p><br/>
