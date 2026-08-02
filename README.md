@@ -1,7 +1,10 @@
-# My log for making my ergonomic keyboard
+# My Ergonomic Keyboard
 
 ## Study Log 
-### (11/3/2026)
+## 12/3/2026
+- I'm considering the layout amongst DVORAK and Coleman-DH from [the Knucklehead layout](https://github.com/minusfive/knucklehead/blob/main/README.md)
+
+## 11/3/2026
 - Making the plan for what I wanna make in my keyboard. Following is some ideas that I have
     1) Corne style split keyboard (easy to carry around) 
     2) Ortholinear columns with a slightly wider gap between each other for my big hands.
@@ -19,5 +22,3 @@
     6) Fix everything together
     7) Code the microcontroller logic and key mapping logic
 
-## (12/3/2026)
-- I'm considering the layout amongst DVORAK and Coleman-DH from [the Knucklehead layout](https://github.com/minusfive/knucklehead/blob/main/README.md)
