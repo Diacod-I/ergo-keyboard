@@ -1,10 +1,32 @@
 # My Ergonomic Keyboard
 
-## Study Log 
-## 12/3/2026
+## Build Log
+### 2/8/2026
+
+#### Did today
+
+1) Filled the MCU pin map: matrix on P2–P10 (cols P2–P6, rows P7–P10), split data on P1, VCC/GND on the rails. Same pads on both halves (identical firmware; QMK handles the split). Left P0 + P14 -> P21 free for the OLED SPI bus / shift-registers later.
+2) Started assigning nets directly on the controller pads in KiCad.
+3) Wired the split link: typed a new data net onto each controller's P1 and each TRRS jack, plus VCC/GND. Both jacks assigned identically so the cable ties the halves together correctly.
+Set up git for the project + .gitignore.
+
+#### Learned
+
+- Blue ratsnest lines = connections that exist but aren't copper yet. Routing = turning every blue line into a trace. When they're all gone, it's routed.
+- A net only exists once a pad uses it. I had to type data into existence (it wasn't in the dropdown).
+- TRRS: exact pad doesn't matter, but data/VCC/GND must be on matching contacts on both jacks or the split won't talk. Sleeve = GND by convention.
+Important: board.kicad_pcb now has hand edits (outline curves + net assignments) that are NOT in config.yaml.
+
+#### Still open
+
+Finish assigning all controller pads -> route the matrix -> ground pour -> DRC -> Gerbers -> order.
+Keymap dry-run (flash the Corne keymap.c, settle hold-vs-toggle) - not started.
+OLED v2: scaffolded + commented out, parked until a test rig.
+
+### 12/3/2026
 - I'm considering the layout amongst DVORAK and Coleman-DH from [the Knucklehead layout](https://github.com/minusfive/knucklehead/blob/main/README.md)
 
-## 11/3/2026
+### 11/3/2026
 - Making the plan for what I wanna make in my keyboard. Following is some ideas that I have
     1) Corne style split keyboard (easy to carry around) 
     2) Ortholinear columns with a slightly wider gap between each other for my big hands.
