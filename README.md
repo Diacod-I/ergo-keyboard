@@ -4,7 +4,7 @@ I have a ton of cramps and metacarpal pain due to typing on small keyboards like
 
 Some guidelines for what I want:
 - Keep it simple and go with QWERTY.
-- Linear over staggered, but we need to aptly position the column based on my hand measurements.
+- Linear over staggered, but I need to aptly position the column based on my hand measurements.
 - Split, so that I can position my arms more freely on a table.
 
 I'm going to add all my work related to this here.
