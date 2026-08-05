@@ -13,7 +13,7 @@ I'm going to add all my work related to this here.
 ### 2/8/2026 (Newest update!)
 
 #### Did today
-1) Manually measured my hands to understand and evaluate an ideal finger placement (since I didn't have a touch screen to test using 
+1) Manually measured my hands to understand and evaluate an ideal finger placement (since I didn't have a touch screen to test with)
 <div align="center">
 <img width="360" height="480" alt="BEB380F8-2C89-42DD-A3A0-69BD96AF3945_4_5005_c" src="https://github.com/user-attachments/assets/e6a3e43c-fdf8-47f3-8472-830c761ccba8" />
 <p>Figure 1. Manual calculations</p><br/>
